@@ -1,0 +1,12 @@
+<h1>{{ title }}</h1>
+
+<p *ngIf="loggedIn">You are logged in!</p>
+<p *ngFor="let snack of snacks">{{snack}}</p>
+<p *ngIf="snacks.length < 3">You need more snacks.</p>
+
+<hr>
+
+<p >Task Desc: {{task}}</p>
+<p *ngFor="let t of tasks">{{t.description}}</p>
+
+<h1 *ngFor="let el of tasks">{{el.title}}</h1>
