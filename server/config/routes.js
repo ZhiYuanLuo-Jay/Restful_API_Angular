@@ -11,7 +11,8 @@ module.exports = function(app){
     });
 
     // create
-    app.post('/task/:title/:description/:completed', function(req, res){
+    app.post('/task/', function(req, res){
+        console.log("I am at routes.js - create");
         tasks.create(req, res);
     });
 
@@ -21,12 +22,13 @@ module.exports = function(app){
     });
 
     // remove
-    app.delete('/task/:id/', function(req, res){
+    app.delete('/task/:id', function(req, res){
         tasks.remove(req, res);
     });
 
      // update
-     app.put('/task/:id/:title/:description/:completed', function(req, res){
+     app.put('/task/', function(req, res){
+        console.log("I am at routes.js - update");
         tasks.update(req, res);
     });
 

@@ -9,24 +9,31 @@ import { identity } from 'rxjs';
 
 export class HttpService {
   //  (2) make HttpClient as an attribute in the class. 
-  constructor(private _http: HttpClient) { 
-    // this.getTasks();
-    // this.getTaskById('5af5dd6b6084c00514924093');
-   }
+  constructor(private _http: HttpClient) {}
  
   getTasks(){
     // our http response is an Observable, store it in a variable
     return this._http.get('/tasks');
-    // subscribe to the Observable and provide the code we would like to do with our data from the response
-    // tempObservable.subscribe(data => console.log("Got our tasks!", data));
   }
 
-  getTaskById(detail:string) {
-    return this._http.get(`/task/${detail}`);
-    // showObservable.subscribe(data => console.log("Got out task by Id", data))
+  getTaskById(id:string) {
+    return this._http.get(`/task/${id}`); // passing the id to the routes.js
   }
 
-  
+  updateTask(editTask){
+    return this._http.put(`/task/`, editTask);
+  }
+
+  addTask(newTask){
+    return this._http.post(`/task/`, newTask)  // passing the newTask obj to the routes.js
+  }
+
+  delTask(id:string) {
+    return this._http.delete(`/task/${id}`);
+  }
+
+
+
 
 }
 

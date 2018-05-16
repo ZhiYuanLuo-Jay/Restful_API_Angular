@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 // Require body-parser (to receive post data from clients)
 var bodyParser = require('body-parser');
 // Integrate body-parser with our App
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); 
 
 // Require path

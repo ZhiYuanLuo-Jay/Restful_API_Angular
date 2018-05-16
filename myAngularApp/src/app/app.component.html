@@ -1,30 +1,84 @@
 <div class="root">
 
-  <h1>{{ title }}</h1>
-  <!-- <p *ngIf="loggedIn">You are logged in!</p>
-  <p *ngFor="let snack of snacks">{{snack}}</p>
-  <p *ngIf="snacks.length < 3">You need more snacks.</p> -->
-  <hr>
-  <!-- <div *ngIf=""></div> -->
+  <h2>{{ title }}</h2>
   <button (click)="onBtnClickTasks()" style="background-color: purple; color: white; width: 180px; height: 50px;" >GET ALL TASKS</button>
-  <p *ngFor="let t of tasks">{{t.description}} <button (click)="onTaskDetail(t._id)" style="background-color: green; color: white; border-radius: 10px;">SHOW</button></p>
-  <div  *ngIf="taskDesc" style="background-color: teal; color: white; width: 100px; text-align: center; ">{{taskDesc}}</div>
+  <p *ngFor="let t of tasks">{{t.title}} <button (click)="onTaskDetail(t._id)" style="background-color: green; color: white; border-radius: 10px;">SHOW</button></p>
   <div  *ngIf="taskTitle" style="background-color: teal; color: white; width: 100px; text-align: center;">{{taskTitle}}</div>
+  <div  *ngIf="taskDesc" style="background-color: teal; color: white; width: 100px; text-align: center; ">{{taskDesc}}</div>
   <!-- *ngIf="taskTitle", if this not exist, the <div> tag will not show  -->
   <hr>
-  <button (click)="onButtonClickP(5)">Click me! with 5</button>
+
+  <!-- <button (click)="onButtonClickP(5)">Click me! with 5</button>
   <hr>
   <button (click)="onButtonClickParams(5, 'hello')">Click me! with 5 and 'hello'</button>
   <hr>
   <button (click)="onButtonClickEvent($event)">Click me! with $event</button>
+  <hr> -->
+
+  <h2>New Task</h2>
+  <form (submit)="onSubmit()">
+    <!-- use the json pipe to see how newTask changes in real time -->
+    <!-- <p> {{ newTask | json }} </p> -->
+    <div>
+      <p class="lbl">Title</p>
+      <input type="text" name="newTask.title" [(ngModel)]="newTask.title">
+    </div>
+    <div>
+      <p class="lbl">Description</p>
+      <input type="text" name="newTask.description" [(ngModel)]="newTask.description">
+    </div>
+    <input type="submit" value="Create Task" />
+  </form>
+
   <hr>
 
-  <!-- <h3 *ngFor="let el of tasks">{{el.title}}</h3> -->
-  <hr>
-  <p >Task Desc: {{task}}</p>
-  <hr>
-  <!-- <p *ngFor="let t of tasks">{{t.description}}</p> -->
-  
-  
+  <h2>Task List</h2>
+  <div class="form">
+    <div *ngFor="let tl of taskList" class="list">
+      <div style="display: inline-block; vertical-align: top; margin-top: 10px; margin-right: 10px;">
+        <p>{{tl.title}}</p>
+        <p>{{tl.description}}</p>
+      </div>
+      <div style="display: inline-block; vertical-align: top; margin-top: 20px">
+        <button (click)="onBtnEditTask(tl._id, tl.title, tl.description)">Edit</button>
+        <br>
+        <br>
+        <button (click)="onBtnDelTask(tl._id)">Delete</button>
+      </div>
+    </div> 
+  </div>
+
+  <div *ngIf="editTask" class="sub-form">
+    <form  (submit)="onUpdate()">
+      <div>
+        <p class="lbl">Title</p>
+        <input type="text" name="editTask.title" [(ngModel)]="editTask.title">
+      </div>
+      <div>
+        <p class="lbl">Description</p>
+        <input type="text" name="editTask.description" [(ngModel)]="editTask.description">
+      </div>
+      <br>
+      <input type="submit" value="Edit">
+    </form>     
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
