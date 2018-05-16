@@ -1,19 +1,15 @@
 <div class="root">
 
   <h2>{{ title }}</h2>
-  <button (click)="onBtnClickTasks()" style="background-color: purple; color: white; width: 180px; height: 50px;" >GET ALL TASKS</button>
-  <p *ngFor="let t of tasks">{{t.title}} <button (click)="onTaskDetail(t._id)" style="background-color: green; color: white; border-radius: 10px;">SHOW</button></p>
-  <div  *ngIf="taskTitle" style="background-color: teal; color: white; width: 100px; text-align: center;">{{taskTitle}}</div>
-  <div  *ngIf="taskDesc" style="background-color: teal; color: white; width: 100px; text-align: center; ">{{taskDesc}}</div>
+  <button (click)="onBtnClickTasks()" class="allBtn"  >GET ALL TASKS</button>
+  
+  <p *ngFor="let t of tasks">{{t.title}} <button (click)="onTaskDetail(t._id)" class="showBtn">SHOW</button></p>
+  <!-- <div *ngIf="taskInfo" class="taskDetail">{{taskInfo.title}}</div> -->
+  <!-- <div *ngIf="taskInfo" class="taskDetail">{{taskInfo.description}}</div> -->
+  <br>
+  <app-task *ngIf="taskInfo" [taskToShow]="taskInfo"></app-task> 
   <!-- *ngIf="taskTitle", if this not exist, the <div> tag will not show  -->
   <hr>
-
-  <!-- <button (click)="onButtonClickP(5)">Click me! with 5</button>
-  <hr>
-  <button (click)="onButtonClickParams(5, 'hello')">Click me! with 5 and 'hello'</button>
-  <hr>
-  <button (click)="onButtonClickEvent($event)">Click me! with $event</button>
-  <hr> -->
 
   <h2>New Task</h2>
   <form (submit)="onSubmit()">
@@ -62,23 +58,6 @@
       <input type="submit" value="Edit">
     </form>     
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </div>

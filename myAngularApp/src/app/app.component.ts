@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   tasks = [];
   taskList = [];
   taskDesc: string;
+  taskInfo: any;
   taskTitle: string;
   snacks: string[];
   loggedIn: boolean;
@@ -79,8 +80,9 @@ export class AppComponent implements OnInit{
     let showOne = this._httpService.getTaskById(id);
     showOne.subscribe(oneInfo =>{
       console.log("Got out task by Id", oneInfo);
-      this.taskTitle = oneInfo['info']['title'];
-      this.taskDesc = oneInfo['info']['description'];
+      // this.taskTitle = oneInfo['info']['title'];
+      // this.taskDesc = oneInfo['info']['description'];
+      this.taskInfo = oneInfo['info'];
     })
   }
   
@@ -111,22 +113,23 @@ export class AppComponent implements OnInit{
   //   });
   // }
 
+
   // Button click, User interactive example
-  onButtonClick(): void { 
-    console.log(`Click event is working`);
-  }
+  // onButtonClick(): void { 
+  //   console.log(`Click event is working`);
+  // }
 
-  onButtonClickP(num: Number): void { 
-    console.log(`Click event is working with num param: ${num}`);
-  }
+  // onButtonClickP(num: Number): void { 
+  //   console.log(`Click event is working with num param: ${num}`);
+  // }
 
-  onButtonClickParams(num: Number, str: String): void { 
-    console.log(`Click event is working with num param: ${num} and str param: ${str}`);
-  }
+  // onButtonClickParams(num: Number, str: String): void { 
+  //   console.log(`Click event is working with num param: ${num} and str param: ${str}`);
+  // }
 
-  onButtonClickEvent(event: any): void { 
-    console.log(`Click event is working with event: ${event}`);
-  }
+  // onButtonClickEvent(event: any): void { 
+  //   console.log(`Click event is working with event: ${event}`);
+  // }
 
 
 }
